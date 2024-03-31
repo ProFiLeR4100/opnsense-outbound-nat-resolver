@@ -15,4 +15,4 @@ COPY --chown=node:node . .
 RUN npm install
 
 EXPOSE 8080
-CMD [ "node", "." ]
+CMD [ "node", "app.js" ]
