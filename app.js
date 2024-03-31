@@ -50,6 +50,8 @@ router.post('/api/resolve', async (req, res) => {
         });
 
         if (!exactMatch) {
+            console.error(`${req.ip} requested to convert ${result.nat_addr}:${result.nat_port}, Error: SOURCE_IP_NOT_FOUND`);
+
             await res.status(404).json({
                 error: "SOURCE_IP_NOT_FOUND"
             });
