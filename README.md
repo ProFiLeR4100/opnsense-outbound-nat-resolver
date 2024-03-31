@@ -80,10 +80,19 @@ sudo docker run -d \
   -e OPNSENSE_API_KEY=<INSERT_YOUR_OPNSENSE_KEY_HERE> \
   -e OPNSENSE_API_SECRET=<INSERT_YOUR_OPNSENSE_SECRET_HERE> \
   -e APP_API_KEY=<INSERT_RANDOM_KEY_THAT_WILL_BE_USED_TO_ACCESS_SERVICE> \
-  -e APP_PORT=8080 \
-  -p 8080:8080 \
+  -e APP_PORT=<INSERT_APP_PORT_HERE> \
+  -p 8080:<INSERT_APP_PORT_HERE> \
   profiler4100/opnsense-outbound-nat-resolver:latest
-``` 
+```
+
+#### 4.3 Test using curl
+
+```shell
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data "{\"data\":{\"address\":\"<INSERT_SOURCE_IP>\",\"port\":\"<INSERT_SOURCE_PORT>\"},\"apiKey\":\"<INSERT_APP_API_KEY>\"}" \
+  http://<INSERT_DOCKER_CONTAINER_IP>:<INSERT_APP_PORT_HERE>/api/resolve
+```
 
 ## 3. Miscellaneous
 
