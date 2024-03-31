@@ -74,13 +74,13 @@ Variables that are related to the work of an Application:
 sudo docker run -d \
 	--restart=always \
 	--name outbound_nat_resolver \
-	-e OPNSENSE_PROTO=http \
-	-e OPNSENSE_ADDR=192.168.0.1 \
-	-e OPNSENSE_PORT=80 \
+	-e OPNSENSE_PROTO=<INSERT_YOUR_OPNSENSE_WEBUI_PROTOCOL_HERE> \
+	-e OPNSENSE_ADDR=<INSERT_YOUR_OPNSENSE_WEBUI_IP_ADDRESS_HERE> \
+	-e OPNSENSE_PORT=<INSERT_YOUR_OPNSENSE_WEBUI_PORT_HERE> \
 	-e OPNSENSE_API_KEY=<INSERT_YOUR_OPNSENSE_KEY_HERE> \
 	-e OPNSENSE_API_SECRET=<INSERT_YOUR_OPNSENSE_SECRET_HERE> \
-	-e APP_PORT=8080 \
 	-e APP_API_KEY=<INSERT_RANDOM_KEY_THAT_WILL_BE_USED_TO_ACCESS_SERVICE> \
+	-e APP_PORT=8080 \
 	-p 8080:8080 \
 	profiler4100/opnsense-outbound-nat-resolver:latest
 ``` 
