@@ -72,20 +72,22 @@ Variables that are related to the work of an Application:
 
 ```shell
 sudo docker run -d \
-	--restart=always \
-	--name outbound_nat_resolver \
-	-e OPNSENSE_PROTO=<INSERT_YOUR_OPNSENSE_WEBUI_PROTOCOL_HERE> \
-	-e OPNSENSE_ADDR=<INSERT_YOUR_OPNSENSE_WEBUI_IP_ADDRESS_HERE> \
-	-e OPNSENSE_PORT=<INSERT_YOUR_OPNSENSE_WEBUI_PORT_HERE> \
-	-e OPNSENSE_API_KEY=<INSERT_YOUR_OPNSENSE_KEY_HERE> \
-	-e OPNSENSE_API_SECRET=<INSERT_YOUR_OPNSENSE_SECRET_HERE> \
-	-e APP_API_KEY=<INSERT_RANDOM_KEY_THAT_WILL_BE_USED_TO_ACCESS_SERVICE> \
-	-e APP_PORT=8080 \
-	-p 8080:8080 \
-	profiler4100/opnsense-outbound-nat-resolver:latest
+  --restart=always \
+  --name outbound_nat_resolver \
+  -e OPNSENSE_PROTO=<INSERT_YOUR_OPNSENSE_WEBUI_PROTOCOL_HERE> \
+  -e OPNSENSE_ADDR=<INSERT_YOUR_OPNSENSE_WEBUI_IP_ADDRESS_HERE> \
+  -e OPNSENSE_PORT=<INSERT_YOUR_OPNSENSE_WEBUI_PORT_HERE> \
+  -e OPNSENSE_API_KEY=<INSERT_YOUR_OPNSENSE_KEY_HERE> \
+  -e OPNSENSE_API_SECRET=<INSERT_YOUR_OPNSENSE_SECRET_HERE> \
+  -e APP_API_KEY=<INSERT_RANDOM_KEY_THAT_WILL_BE_USED_TO_ACCESS_SERVICE> \
+  -e APP_PORT=8080 \
+  -p 8080:8080 \
+  profiler4100/opnsense-outbound-nat-resolver:latest
 ``` 
 
-### Log example:
+## 3. Miscellaneous
+
+#### 3.1 Log example:
 ```
 user@host:~/opnsense-outbound-nat-resolver $ node .
 
@@ -93,3 +95,5 @@ outbound-nat-resolver app listening on port 80!
 127.0.0.1 requested to convert 192.168.0.3:44064, Error: SOURCE_IP_NOT_FOUND
 127.0.0.1 requested to convert 192.168.0.3:8091, Result: 207.154.192.194:60386
 ```
+
+*P.S. In order to see real IP of caller you need to use `macvlan` network driver for docker container in that case you can remove port forwarding in command above.*
