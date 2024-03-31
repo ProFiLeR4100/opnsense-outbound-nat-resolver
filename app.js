@@ -63,7 +63,7 @@ router.post('/api/resolve', async (req, res) => {
         result.dest_port = exactMatch.dst_port;
 
 
-        console.log(`${req.ip} requested to convert ${result.nat_addr}:${result.nat_port}, result: ${result.src_addr}:${result.src_port}`);
+        console.log(`${req.ip} requested to convert ${result.nat_addr}:${result.nat_port}, Result: ${result.src_addr}:${result.src_port}`);
 
         await res.status(200).json(result);
     } catch (e) {
