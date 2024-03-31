@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:20.12.0-alpine
 
 ENV OPNSENSE_PROTO = http
 ENV OPNSENSE_ADDR = 192.168.0.1
