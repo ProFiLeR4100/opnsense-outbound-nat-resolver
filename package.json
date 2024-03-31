@@ -1,0 +1,17 @@
+{
+  "name": "opnsense-outbound-nat-resolver",
+  "version": "1.0.0",
+  "description": "When Outbound NAT is applied, source IP is replaced by IP of firewall instance, in order to get source IP, this app exists.",
+  "author": "Mykhailo Shcherbyna <profiler4100v2@gmail.com>",
+  "license": "MIT",
+  "main": "app.js",
+  "keywords": [
+    "nodejs",
+    "bootstrap",
+    "express"
+  ],
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.3.4"
+  }
+}
