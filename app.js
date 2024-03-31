@@ -11,7 +11,8 @@ const OPNSENSE_FULL_ADDRESS = `${OPNSENSE_PROTO}://${OPNSENSE_ADDR}:${OPNSENSE_P
 const OPNSENSE_API_KEY = process.env.OPNSENSE_API_KEY;
 const OPNSENSE_API_SECRET = process.env.OPNSENSE_API_SECRET;
 const AUTH_TOKEN = 'Basic ' + Buffer.from(OPNSENSE_API_KEY + ':' + OPNSENSE_API_SECRET).toString('base64');
-const APP_PORT = 80;
+const APP_PORT = process.env.APP_PORT;
+const APP_API_KEY = process.env.APP_API_KEY;
 
 app.use(express.json());
 
@@ -23,7 +24,7 @@ router.post('/api/resolve', async (req, res) => {
     try {
         const {data: {address, port}, apiKey} = req.body;
 
-        if (apiKey !== process.env.API_KEY) {
+        if (apiKey !== APP_API_KEY) {
             throw new Error("KEY_IS_INVALID");
         }
 
@@ -77,6 +78,6 @@ router.post('/api/resolve', async (req, res) => {
 
 app.use('/', router);
 
-app.listen(APP_PORT, function () {
-    console.log('outbound-nat-resolver app listening on port 80!');
+app.listen(APP_PORT, () => {
+    console.log(`outbound-nat-resolver app listening on port ${APP_PORT}!`);
 });
